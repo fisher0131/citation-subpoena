@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "subpoena"
+version = "0.1.0"
+description = "Make every citation testify: audit whether a finished report's citations actually support its claims"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["requests>=2.31,<3", "pypdf>=4,<6"]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+[project.urls]
+Homepage = "https://github.com/fisher0131/citation-subpoena"
+Repository = "https://github.com/fisher0131/citation-subpoena"
+Issues = "https://github.com/fisher0131/citation-subpoena/issues"
+
+[project.scripts]
+subpoena = "subpoena.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+subpoena = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
